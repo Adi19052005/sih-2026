@@ -1,0 +1,4 @@
+docker pull python:3.11-alpine
+docker pull node:20-alpine
+docker pull eclipse-temurin:21-jdk-alpine
+docker pull alpine:latest

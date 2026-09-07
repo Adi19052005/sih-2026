@@ -1,0 +1,25 @@
+
+# Use a lightweight Python image
+FROM python:3.12-slim
+
+# Prevent Python from creating .pyc files
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# Send Python output directly to the terminal
+ENV PYTHONUNBUFFERED=1
+
+# Set working directory inside the container
+WORKDIR /app
+
+# Install required Python packages
+RUN pip install --no-cache-dir \
+    python-docx \
+    python-pptx \
+    fastapi \
+    uvicorn
+
+# Copy backend files into the container
+COPY . /app
+
+# Run the FastAPI backend
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
